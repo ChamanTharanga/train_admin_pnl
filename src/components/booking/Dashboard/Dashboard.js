@@ -74,9 +74,9 @@ class Dashboard extends Component {
 							<div className="col-6 col-md-4 col-xl-2">
 								<div className="card">
 									<div className="card-body">
-										<Link to="/contact" className="my_sort_cut text-muted">
+										<Link to="/station" className="my_sort_cut text-muted">
 											<i className="fa fa-address-book"></i>
-											<span>Contact</span>
+											<span>Station</span>
 										</Link>
 									</div>
 								</div>

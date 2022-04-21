@@ -2,4 +2,4 @@
 @import './assets/css/style.min.css';
 @import './assets/css/default.css';
 @import './assets/plugins/nestable/jquery-nestable.css';
-
+@import '~antd/dist/antd.css';

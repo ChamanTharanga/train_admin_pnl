@@ -4,13 +4,13 @@ import Trains from './booking/train/train';
 import Schedule from './booking/Schedule/schedule';
 import Passangers from './booking/Passangers/Passangers';
 import Delivery from './booking/Delivery/Delivery';
-import Courses from './booking/Courses/Courses';
-import CourseDetails from './booking/Courses/CourseDetails';
+import Journeys from './booking/Journeys/Journeys';
+import CourseDetails from './booking/Journeys/JourneysDetails';
 import Library from './booking/Library/Library';
 import Holiday from './booking/Holiday/Holiday';
 import Calendar from './booking/Calendar/Calendar';
 import ChatApp from './booking/ChatApp/ChatApp';
-import Contact from './booking/Contact/Contact';
+import Station from './booking/Station/Station';
 import FileManager from './booking/FileManager/FileManager';
 import Payments from './admin/Payments/Payments';
 import Noticeboard from './admin/Noticeboard/Noticeboard';
@@ -187,11 +187,11 @@ const Routes = [
         component: FileManager
     },
     {
-        path: "/contact",
-        name: 'contact',
+        path: "/station",
+        name: 'station',
         exact: true,
-        pageTitle: "Contact",
-        component: Contact
+        pageTitle: "Station",
+        component: Station
     },
     {
         path: "/chat",
@@ -222,11 +222,11 @@ const Routes = [
         component: Library
     },
     {
-        path: "/courses",
-        name: 'courses',
+        path: "/journeys",
+        name: 'journeys',
         exact: true,
-        pageTitle: "Courses",
-        component: Courses
+        pageTitle: "journeys",
+        component: Journeys
     },
     {
         path: "/courseDetails",
@@ -249,13 +249,13 @@ const Routes = [
         pageTitle: "Passangers",
         component: Passangers
     },
-    {
-        path: "/schedule",
-        name: 'schedule',
-        exact: true,
-        pageTitle: "Schedule",
-        component: Schedule
-    },
+    // {
+    //     path: "/schedule",
+    //     name: 'schedule',
+    //     exact: true,
+    //     pageTitle: "Schedule",
+    //     component: Schedule
+    // },
     {
         path: "/trains",
         name: 'trains',

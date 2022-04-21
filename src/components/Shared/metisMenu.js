@@ -5,36 +5,36 @@ export const adminMenu = [
 		"label": "Payments",
 		"to": "/payments"
 	},
-	{
-		"id": 2,
-		"icon": "list-ul",
-		"label": "Taskboard",
-		"to": "/taskboard"
-	},
-	{
-		"id": 3,
-		"icon": "bed",
-		"label": "Hostel",
-		"to": "/hostel"
-	},
-	{
-		"id": 4,
-		"icon": "truck",
-		"label": "Transport",
-		"to": "/transports"
-	},
-	{
-		"id": 5,
-		"icon": "calendar-check-o",
-		"label": "Attendance",
-		"to": "/attandance"
-	},
-	{
-		"id": 6,
-		"icon": "flag",
-		"label": "Leave",
-		"to": "/leave"
-	},
+	// {
+	// 	"id": 2,
+	// 	"icon": "list-ul",
+	// 	"label": "Taskboard",
+	// 	"to": "/taskboard"
+	// },
+	// {
+	// 	"id": 3,
+	// 	"icon": "bed",
+	// 	"label": "Hostel",
+	// 	"to": "/hostel"
+	// },
+	// {
+	// 	"id": 4,
+	// 	"icon": "truck",
+	// 	"label": "Transport",
+	// 	"to": "/transports"
+	// },
+	// {
+	// 	"id": 5,
+	// 	"icon": "calendar-check-o",
+	// 	"label": "Attendance",
+	// 	"to": "/attandance"
+	// },
+	// {
+	// 	"id": 6,
+	// 	"icon": "flag",
+	// 	"label": "Leave",
+	// 	"to": "/leave"
+	// },
 	{
 		"id": 7,
 		"icon": "gear",
@@ -55,12 +55,12 @@ export const universityMenu = [
 		"label": "Trains",
 		"to": "/trains"
 	},
-	{
-		"id": 3,
-		"icon": "user-circle-o",
-		"label": "Schedule",
-		"to": "/schedule"
-	},
+	// {
+	// 	"id": 3,
+	// 	"icon": "user-circle-o",
+	// 	"label": "Schedule",
+	// 	"to": "/schedule"
+	// },
 	{
 		"id": 4,
 		"icon": "users",
@@ -73,12 +73,12 @@ export const universityMenu = [
 		"label": "Delivery",
 		"to": "/delivery"
 	},
-	// {
-	// 	"id": 6,
-	// 	"icon": "graduation-cap",
-	// 	"label": "Courses",
-	// 	"to": "/courses"
-	// },
+	{
+		"id": 6,
+		"icon": "graduation-cap",
+		"label": "Journeys",
+		"to": "/journeys"
+	},
 	// {
 	// 	"id": 7,
 	// 	"icon": "book",
@@ -110,9 +110,10 @@ export const universityMenu = [
 	{
 		"id": 12,
 		"icon": "address-book",
-		"label": "Contact",
-		"to": "/contact"
+		"label": "Station",
+		"to": "/station"
 	},
+
 	// {
 	// 	"id": 13,
 	// 	"icon": "folder",

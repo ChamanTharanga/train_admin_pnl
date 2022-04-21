@@ -7,6 +7,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import registerServiceWorker from './registerServiceWorker';
 
+import './config/firebaseConfig'
+
+require('dotenv').config();
+
 ReactDOM.render(
     <Provider store={configureStore()}>
         <App />
