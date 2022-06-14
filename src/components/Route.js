@@ -1,7 +1,7 @@
 // Import all components here
 import Dashboard from './booking/Dashboard/Dashboard';
 import Trains from './booking/train/train';
-import Schedule from './booking/Schedule/schedule';
+import User from './booking/User/user';
 import Passangers from './booking/Passangers/Passangers';
 import Delivery from './booking/Delivery/Delivery';
 import Journeys from './booking/Journeys/Journeys';
@@ -249,13 +249,13 @@ const Routes = [
         pageTitle: "Passangers",
         component: Passangers
     },
-    // {
-    //     path: "/schedule",
-    //     name: 'schedule',
-    //     exact: true,
-    //     pageTitle: "Schedule",
-    //     component: Schedule
-    // },
+    {
+        path: "/user",
+        name: 'user',
+        exact: true,
+        pageTitle: "User",
+        component: User
+    },
     {
         path: "/trains",
         name: 'trains',

@@ -96,12 +96,12 @@ const Station = () => {
 										dataIndex: 'name'
 									},
 									{
-										title: "Lat",
+										title: "Latitude",
 										key: 'lat',
 										dataIndex: 'lat'
 									},
 									{
-										title: "Lon",
+										title: "Longtitude",
 										key: 'lon',
 										dataIndex: 'lon'
 									},
@@ -122,7 +122,6 @@ const Station = () => {
 										<FormItem name="lon" required label="Longtitude" rules={[{ required: true }]}>
 											<InputNumber className="w-100" />
 										</FormItem>
-
 										<Button type="primary" htmlType="submit">Save</Button>
 									</Form>
 								</div>

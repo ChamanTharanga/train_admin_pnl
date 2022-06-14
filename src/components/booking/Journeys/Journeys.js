@@ -10,6 +10,8 @@ import { Button, Select, TimePicker, message, Table, InputNumber } from 'antd';
 import { addDoc, doc, getDoc, getDocs, onSnapshot } from 'firebase/firestore';
 import { routerCollection, stationCollection, trainCollection } from '../../../config/firebaseConfig';
 import Form, { useForm } from 'antd/lib/form/Form';
+import moment from 'moment';
+
 
 
 
@@ -49,7 +51,7 @@ const Journeys = () => {
 			const stops =
 				e.stops.map(e => doc(stationCollection, e));
 			console.log(e);
-			addDoc(routerCollection, { ...e, train, time, start, end, stops});
+			addDoc(routerCollection, { ...e, train, time, start, end, stops });
 			message.success({ content: "Saved Router", key });
 			form.resetFields();
 		} catch (e) {
@@ -78,10 +80,10 @@ const Journeys = () => {
 				const train = await getDoc(data.train)
 				const start = await getDoc(data.start)
 				const end = await getDoc(data.end)
-				const stop = await getDoc(data.stops)
+				// const stop = await getDoc(data.stops)
 
 				const id = val.id;
-				return { ...data, id, train: train.data(), start: start.data(), end: end.data(), stop: stop.data()};
+				return { ...data, id, train: train.data(), start: start.data(), end: end.data() };
 			}));
 			setItems(data);
 		});
@@ -133,14 +135,8 @@ const Journeys = () => {
 										render: (_, e) => e.train.name
 									},
 									{
-										title: "Time",
-										key: 'time',
-										dataIndex: 'time'
-									},
-									{
-										title: "Lon",
-										key: 'lon',
-										dataIndex: 'lon'
+										// title: "Date",
+										// render: (_, r)=> moment(r.date.toDate()).format('LL'),
 									},
 									{
 										title: "Start",
@@ -151,11 +147,6 @@ const Journeys = () => {
 										title: "End",
 										key: 'end',
 										render: (_, e) => e.end.name
-									},
-									{
-										// title: "Stop",
-										// key: 'stops',
-										// render: (_, e) => e.stops.name
 									},
 								]} />
 							</div>
@@ -209,20 +200,20 @@ const Journeys = () => {
 											</Select>
 										</FormItem>
 										<FormItem name="price" required label="Price" rules={[{ required: true }]}>
-											<InputNumber className="w-100"/>
+											<InputNumber className="w-100" />
 										</FormItem>
 										<FormItem name="seat" required label="Seat" rules={[{ required: true }]}>
-											<InputNumber className="w-100"/>
+											<InputNumber className="w-100" />
 										</FormItem>
 										<Button htmlType="submit" type="primary">SAVE</Button>
-										
+
 									</Form>
 								</div>
 							</div>
 							<div className="card">
 							</div>
 						</TabPane>
-											</TabContent>
+					</TabContent>
 				</div>
 			</div>
 		</>

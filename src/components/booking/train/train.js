@@ -116,10 +116,10 @@ const Train = () => {
 						<TabPane tabId={1} className={classnames(['fade show'])}>
 							<div className="table-responsive">
 								<Table dataSource={items} columns={[
-									{
-										title: '',
-										render: (_, r)=> <Avatar src={r.image} />
-									},
+									// {
+									// 	title: '',
+									// 	render: (_, r)=> <Avatar src={r.image} />
+									// },
 									{
 										title: "Train Name",
 										key: 'name',
@@ -155,6 +155,9 @@ const Train = () => {
 												<Input />
 											</FormItem>
 											<FormItem name="number" required label="Train Number" rules={[{ required: true }]}>
+												<Input />
+											</FormItem>
+											<FormItem name="seat" required label="Seats" rules={[{ required: true }]}>
 												<Input />
 											</FormItem>
 											<FormItem name="image"  required label="Train Image" rules={[{ required: true }]}>

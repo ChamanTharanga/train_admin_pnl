@@ -31,3 +31,5 @@ export const firestore = getFirestore(firebaseApp);
 export const trainCollection = collection(firestore, 'trains');
 export const stationCollection = collection(firestore, 'stations');
 export const routerCollection = collection(firestore, 'routers');
+export const bookingCollection = collection(firestore, 'bookings');
+export const usersCollection = collection(firestore, 'users');

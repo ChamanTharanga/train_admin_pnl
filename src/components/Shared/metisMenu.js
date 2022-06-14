@@ -55,12 +55,12 @@ export const universityMenu = [
 		"label": "Trains",
 		"to": "/trains"
 	},
-	// {
-	// 	"id": 3,
-	// 	"icon": "user-circle-o",
-	// 	"label": "Schedule",
-	// 	"to": "/schedule"
-	// },
+	{
+		"id": 3,
+		"icon": "user-circle-o",
+		"label": "User",
+		"to": "/user"
+	},
 	{
 		"id": 4,
 		"icon": "users",
@@ -104,8 +104,8 @@ export const universityMenu = [
 	{
 		"id": 11,
 		"icon": "comments-o",
-		"label": "Chat App",
-		"to": "/chat"
+		"label": "Customer ",
+		"to": "/FeedBack"
 	},
 	{
 		"id": 12,
