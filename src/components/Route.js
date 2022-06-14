@@ -8,7 +8,7 @@ import Journeys from './booking/Journeys/Journeys';
 import CourseDetails from './booking/Journeys/JourneysDetails';
 import Library from './booking/Library/Library';
 import Holiday from './booking/Holiday/Holiday';
-import Calendar from './booking/Calendar/Calendar';
+import Category from './booking/Category/Category';
 import ChatApp from './booking/ChatApp/ChatApp';
 import Station from './booking/Station/Station';
 import FileManager from './booking/FileManager/FileManager';
@@ -202,10 +202,10 @@ const Routes = [
     },
     {
         path: "/events",
-        name: 'calendar',
+        name: 'category',
         exact: true,
-        pageTitle: "Calendar",
-        component: Calendar
+        pageTitle: "Category",
+        component: Category
     },
     {
         path: "/holiday",

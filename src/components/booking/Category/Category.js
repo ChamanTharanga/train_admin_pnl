@@ -1,3 +1,4 @@
+import React, { Component, useEffect, useState } from 'react';
 import SweetAlert from 'sweetalert2-react';
 import ToolTip from "../../common/toolTip";
 import { TabContent, TabPane, Nav, NavLink, NavItem } from "reactstrap";
@@ -6,47 +7,29 @@ import Dropzone from '../../common/DropzoneExample';
 import FormItem from 'antd/lib/form/FormItem';
 import Input from 'antd/lib/input/Input';
 import Form, { useForm } from 'antd/lib/form/Form';
-import { Avatar, Select, Button, InputNumber, message, Table, DatePicker } from 'antd';
-import { doc, onSnapshot, getDocs, setDoc } from 'firebase/firestore';
+import { Avatar, Button, InputNumber, message, Table } from 'antd';
+import { doc, onSnapshot, setDoc } from 'firebase/firestore';
 import * as uuid from 'uuid';
-import { categoryCollection, routerCollection,stationCollection } from '../../../config/firebaseConfig';
-import React, { useCallback, useEffect, useState } from 'react';
+// import { categoryCollection } from '../../../config/firebaseConfig';
+
+import { categoryCollection } from '../../../config/firebaseConfig';
 
 
-const Delivery = () => {
+const Category = () => {
 	const [activeTab, setActiveTab] = useState(1);
 	const [show, setShow] = useState(false);
-	const [categorys, setCategorys] = useState([]);
-	const [routers, setRouters] = useState([]);
-
-
 
 	const [form] = useForm();
 
 	const key = Math.random();
 
-	const getCategorys = useCallback(
-		() => {
-			return categorys.map((v) => <Select.Option value={v.id}>{v.name}</Select.Option>);
-		},
-		[categorys],
-	)
-
-	const getRouters = useCallback(
-		() => {
-			return routers.map((v) => <Select.Option value={v.id}>{v.stop}</Select.Option>);
-		},
-		[routers],
-	)
-
-
 	const onSave = (e) => {
 		try {
 			const id = uuid.v4();
-			message.loading({ content: "Saving Station", key });
+			message.loading({ content: "Saving Category", key });
 
-			message.success({ content: "Saved Station", key });
-			setDoc(doc(stationCollection, id), e);
+			message.success({ content: "Saved Category", key });
+			setDoc(doc(categoryCollection, id), e);
 			form.resetFields();
 		} catch (e) {
 			console.error(e);
@@ -58,22 +41,14 @@ const Delivery = () => {
 	const [items, setItems] = useState();
 
 	useEffect(() => {
-		// onSnapshot(stationCollection, async (d) => {
-		// 	const { docs } = d;
-		// 	const data = await Promise.all(docs.map(async (val) => {
-		// 		const data = val.data();
-		// 		const id = val.id;
-		// 		return { ...data, id };
-		// 	}));
-		// 	setItems(data);
-		getDocs(categoryCollection).then((d) => {
-			const docs = d.docs;
-			setCategorys(docs.map((val) => ({ ...val.data(), id: val.id })));
-		});
-
-		getDocs(routerCollection).then((d) => {
-			const docs = d.docs;
-			setRouters(docs.map((val) => ({ ...val.data(), id: val.id })));
+		onSnapshot(categoryCollection, async (d) => {
+			const { docs } = d;
+			const data = await Promise.all(docs.map(async (val) => {
+				const data = val.data();
+				const id = val.id;
+				return { ...data, id };
+			}));
+			setItems(data);
 		});
 
 	},
@@ -85,7 +60,7 @@ const Delivery = () => {
 				<div className="container-fluid">
 					<div className="d-flex justify-content-between align-items-center ">
 						<div className="header-action">
-							<h1 className="page-title">Station</h1>
+							<h1 className="page-title">Category</h1>
 							<ol className="breadcrumb page-breadcrumb">
 							</ol>
 						</div>
@@ -119,19 +94,14 @@ const Delivery = () => {
 							<div className="table-responsive">
 								<Table dataSource={items} columns={[
 									{
-										title: "Station Name",
+										title: "Category Name",
 										key: 'name',
 										dataIndex: 'name'
 									},
 									{
-										title: "Latitude",
-										key: 'lat',
-										dataIndex: 'lat'
-									},
-									{
-										title: "Longtitude",
-										key: 'lon',
-										dataIndex: 'lon'
+										title: "Price",
+										key: 'price',
+										dataIndex: 'price'
 									},
 								]} />
 							</div>
@@ -141,24 +111,11 @@ const Delivery = () => {
 							<div className="card">
 								<div className="card-body">
 									<Form form={form} layout="vertical" className="m-4" onFinish={onSave}>
-									<FormItem name="start" required label="Start Staion" rules={[{ required: true }]}>
-											<Select className="w-100">
-												{getRouters()}
-											</Select>
-										</FormItem>
-										<FormItem name="ename" required label="End Station" rules={[{ required: true }]}>
+										<FormItem name="name" required label="Category Name" rules={[{ required: true }]}>
 											<Input width />
 										</FormItem>
-										<FormItem name="date" required label="Date" rules={[{ required: true }]}>
-										<DatePicker className="w-100"/>
-										</FormItem>
-										<FormItem name="start" required label="Start Point" rules={[{ required: true }]}>
-											<Select className="w-100">
-												{getCategorys()}
-											</Select>
-										</FormItem>
 										<FormItem name="price" required label="Price" rules={[{ required: true }]}>
-											<InputNumber className="w-100"/>
+											<InputNumber className="w-100" />
 										</FormItem>
 										<Button type="primary" htmlType="submit">Save</Button>
 									</Form>
@@ -173,4 +130,4 @@ const Delivery = () => {
 
 }
 
-export default Delivery;
+export default Category;
