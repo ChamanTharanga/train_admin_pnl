@@ -185,6 +185,12 @@ const Journeys = () => {
 												{getStation()}
 											</Select>
 										</FormItem>
+										<FormItem name="startTime" required label="Start Time" rules={[{ required: true }]}>
+											<TimePicker use12Hours format="h:mm A" className="w-100" />
+										</FormItem>
+										<FormItem name="arrivalTime" required label="Arrival Time" rules={[{ required: true }]}>
+											<TimePicker use12Hours format="h:mm A" className="w-100" />
+										</FormItem>
 										<FormItem name="end" required label="End Point" rules={[{ required: true }]}>
 											<Select className="w-100">
 												{getStation()}

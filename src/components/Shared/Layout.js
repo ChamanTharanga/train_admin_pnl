@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Menu from './Menu';
+import withAuthChecker from '../../helper/withAuthChecker';
 
-export default class Layout extends Component {
-	render() {
-		return (
-			<div id="main_content">
-				<Menu {...this.props} />
-			</div>
-		);
-	}
+const Layout = (props) => {
+
+	return (
+		<div id="main_content">
+			<Menu {...props} />
+		</div>
+	);
+
 }
+
+export default withAuthChecker(Layout);
