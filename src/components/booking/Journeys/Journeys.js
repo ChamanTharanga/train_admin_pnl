@@ -46,6 +46,8 @@ const Journeys = () => {
 			message.loading({ content: "Saving Router", key });
 			const train = doc(trainCollection, e.train);
 			const time = e.time.toDate();
+			if(e.seat >= 0)
+				e.seat = +e.seat;
 			const start = doc(stationCollection, e.start);
 			const end = doc(stationCollection, e.end);
 			const stops =
