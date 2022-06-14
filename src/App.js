@@ -15,6 +15,7 @@ import {
 	toggle3DotMenuAction,
 	pagesMenuAction, mailMenuAction, profileMenuAction, dropDownMenuAction
 } from './actions/settingsAction';
+import SignOut from './components/Authentication/SignOut';
 
 class App extends Component {
 	constructor(props) {
@@ -62,6 +63,7 @@ class App extends Component {
 				<Router>
 					<Switch>
 						<Route path="/signup" component={SignUp} />
+						<Route path="/signout" component={SignOut} />
 						<Route path="/login" component={Login} />
 						<Route path="/forgotpassword" component={ForgotPassword} />
 						<Route path="/notfound" component={NotFound} />

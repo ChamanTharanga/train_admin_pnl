@@ -46,6 +46,8 @@ const Journeys = () => {
 			message.loading({ content: "Saving Router", key });
 			const train = doc(trainCollection, e.train);
 			const time = e.time.toDate();
+			if(e.seat >= 0)
+				e.seat = +e.seat;
 			const start = doc(stationCollection, e.start);
 			const end = doc(stationCollection, e.end);
 			const stops =
@@ -168,10 +170,12 @@ const Journeys = () => {
 												{getTrains()}
 											</Select>
 										</FormItem>
-										<FormItem name="time" required label="Time" rules={[{ required: true }]}>
-											<TimePicker className="w-100" format={'HH:mm'} />
+										<FormItem name="startTime" required label="Start Time" rules={[{ required: true }]}>
+											<TimePicker className="w-100" use12Hours format="h:mm A" />
 										</FormItem>
-
+										<FormItem name="arrivalTime" required label="Arrival Time" rules={[{ required: true }]}>
+											<TimePicker use12Hours format="h:mm A" className="w-100" />
+										</FormItem>
 										<h6>Available Days</h6>
 										{['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'].map((v) =>
 											<FormItem name={v} key={v} valuePropName="checked" initialValue={false}>
@@ -185,6 +189,7 @@ const Journeys = () => {
 												{getStation()}
 											</Select>
 										</FormItem>
+
 										<FormItem name="end" required label="End Point" rules={[{ required: true }]}>
 											<Select className="w-100">
 												{getStation()}

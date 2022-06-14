@@ -230,7 +230,7 @@ class Header extends Component {
                                         <div className="dropdown-divider"></div>
                                         <span className="dropdown-item" ><i
                                             className="dropdown-icon fe fe-help-circle"></i> Need help?</span>
-                                        <Link className="dropdown-item" to="/login"><i
+                                        <Link className="dropdown-item" to="/signout"><i
                                             className="dropdown-icon fe fe-log-out"></i> Sign out</Link>
                                     </div>
                                 </div>
