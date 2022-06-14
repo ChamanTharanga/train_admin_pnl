@@ -88,6 +88,9 @@ const Payments = () => {
 												title: "User",
 												render: (_, e)=> e.user?.name
 											},
+
+
+											
 											{
 												title: "Train",
 												key: 'train',
