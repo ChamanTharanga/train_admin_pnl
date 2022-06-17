@@ -1,16 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 import { TabContent, TabPane, Nav, NavLink, NavItem, } from "reactstrap";
 import classnames from 'classnames';
 import FormItem from 'antd/lib/form/FormItem';
 import Checkbox from 'antd/lib/checkbox/Checkbox';
-import { Button, Select, TimePicker, message, Table, InputNumber } from 'antd';
+import { Button, Select, TimePicker, message, Table, InputNumber, Row, Col, Divider } from 'antd';
 import { addDoc, doc, getDoc, getDocs, onSnapshot } from 'firebase/firestore';
 import { routerCollection, stationCollection, trainCollection } from '../../../config/firebaseConfig';
 import Form, { useForm } from 'antd/lib/form/Form';
-import moment from 'moment';
+
+import FormList from 'antd/lib/form/FormList';
+import Title from 'antd/lib/typography/Title';
 
 
 
@@ -40,20 +41,29 @@ const Journeys = () => {
 		[stations],
 	)
 
-	/** @type{ (e: {s: string, time: import('moment').Moment, start: string,end: string,stops: string[],price: number,sheets: number})=> {}} */
+	/** @type{ (e: {stops: {stop: string, time: import('moment').Moment}[], s: string, arrivalTime: import('moment').Moment,  startTime: import('moment').Moment, start: string,end: string,stops: string[],price: number,sheets: number})=> {}} */
 	const onSaveSubmit = (e) => {
 		try {
+			console.log(e);
 			message.loading({ content: "Saving Router", key });
 			const train = doc(trainCollection, e.train);
-			const time = e.time.toDate();
-			if(e.seat >= 0)
+			// const time = e.time.toDate();
+			if(!e?.stops?.length || e?.stops?.length < 2){
+				message.error("Add atleast two stops");
+				return;
+			}
+			if (e.seat >= 0)
 				e.seat = +e.seat;
 			const start = doc(stationCollection, e.start);
 			const end = doc(stationCollection, e.end);
 			const stops =
-				e.stops.map(e => doc(stationCollection, e));
+				e.stops.map(e => doc(stationCollection, e.stop));
+			const times =
+				e.stops.map(e => e.time.toDate());
 			console.log(e);
-			addDoc(routerCollection, { ...e, train, time, start, end, stops });
+			e.arrivalTime = e?.arrivalTime?.toDate();
+			e.startTime = e?.startTime?.toDate();
+			addDoc(routerCollection, { ...e, train, times, start, end, stops });
 			message.success({ content: "Saved Router", key });
 			form.resetFields();
 		} catch (e) {
@@ -195,15 +205,48 @@ const Journeys = () => {
 												{getStation()}
 											</Select>
 										</FormItem>
-										<FormItem name="stops" required label="Stops" rules={[{ required: true }]}>
-											<Select
-												mode="multiple"
-												placeholder="Select Multiple Stops"
-												className="w-100"
-											>
-												{getStation()}
-											</Select>
-										</FormItem>
+										<Title level={4}>Add Stops</Title>
+										<FormList name="stops">
+											{(fields, { add, remove }, { errors }) => (
+												<>
+													{fields.map((field) => (
+														<>
+															{fields.length && (<FormItem noStyle key={field.key}>
+																<Row gutter={8} style={{alignItems: 'center'}}>
+																	<Col md={12}>
+																		<FormItem name={[field.name, "stop"]} required label="Stop" rules={[{ required: true, message: "Required" }]}>
+																			<Select
+																				placeholder="Select Multiple Stops"
+																				className="w-100"
+																			>
+																				{getStation()}
+																			</Select>
+																		</FormItem>
+																	</Col>
+																	<Col md={11}>
+																		<FormItem name={[field.name, "time"]} required label="Arrival Time" rules={[{ required: true, message: "Required"  }]}>
+																			<TimePicker className="w-100" format="h:mm A" use12Hours />
+																		</FormItem>
+																	</Col>
+																	<Col md={1}>
+																		{fields.length > 1 ? (
+																			<Button
+																				className="dynamic-delete-button"
+																				onClick={() => remove(field.name)}
+																			>-</Button>
+																		) : null}
+																	</Col>
+																</Row>
+															</FormItem>)}
+														</>
+													))}
+													<Button block type="primary" onClick={add}>
+														Add +
+													</Button>
+												</>
+											)}
+										</FormList>
+										<Divider></Divider>
 										<FormItem name="price" required label="Price" rules={[{ required: true }]}>
 											<InputNumber className="w-100" />
 										</FormItem>
