@@ -6,7 +6,7 @@ import Dropzone from '../../common/DropzoneExample';
 import FormItem from 'antd/lib/form/FormItem';
 import Input from 'antd/lib/input/Input';
 import Form, { useForm } from 'antd/lib/form/Form';
-import { Avatar, Select, Button, InputNumber, message, Table, DatePicker } from 'antd';
+import { Avatar, Select, Button, InputNumber, message, Table, DatePicker,Space } from 'antd';
 import { doc, onSnapshot, getDocs, setDoc } from 'firebase/firestore';
 import * as uuid from 'uuid';
 import { categoryCollection, routerCollection,stationCollection } from '../../../config/firebaseConfig';
@@ -124,12 +124,12 @@ const Delivery = () => {
 										dataIndex: 'name'
 									},
 									{
-										title: "Latitude",
+										title: "Category",
 										key: 'lat',
 										dataIndex: 'lat'
 									},
 									{
-										title: "Longtitude",
+										title: "Price",
 										key: 'lon',
 										dataIndex: 'lon'
 									},
@@ -160,7 +160,10 @@ const Delivery = () => {
 										<FormItem name="price" required label="Price" rules={[{ required: true }]}>
 											<InputNumber className="w-100"/>
 										</FormItem>
-										<Button type="primary" htmlType="submit">Save</Button>
+										<Space direction="horizontal">
+										<Button type="primary" htmlType="submit" >Save</Button>  
+										<Button type="primary" htmlType="submit">Update</Button>
+										</Space>
 									</Form>
 								</div>
 							</div>

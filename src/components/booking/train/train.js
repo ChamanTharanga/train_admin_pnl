@@ -12,7 +12,7 @@ import Form, { useForm } from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import Input from 'antd/lib/input/Input';
 import ImagePicker from '../../common/ImagePicker';
-import { Avatar, Button, message, Table, } from 'antd';
+import { Avatar, Button, message, Table,Space} from 'antd';
 import { addDoc, doc, onSnapshot, setDoc } from 'firebase/firestore';
 import { firebaseStorage, trainCollection } from '../../../config/firebaseConfig';
 import * as uuid from 'uuid';
@@ -163,7 +163,10 @@ const Train = () => {
 											<FormItem name="image"  required label="Train Image" rules={[{ required: true }]}>
 												<ImagePicker />
 											</FormItem>
-											<Button type="primary" htmlType="submit">Save</Button>
+											<Space direction="horizontal">
+										<Button type="primary" htmlType="submit" >Save</Button>  
+										<Button type="primary" htmlType="submit">Update</Button>
+										</Space>
 										</Form>
 									</div>
 								</div>

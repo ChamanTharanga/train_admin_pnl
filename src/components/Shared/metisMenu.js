@@ -98,7 +98,7 @@ export const universityMenu = [
 	{
 		"id": 10,
 		"icon": "calendar",
-		"label": "Calender",
+		"label": "Category",
 		"to": "/events"
 	},
 	{

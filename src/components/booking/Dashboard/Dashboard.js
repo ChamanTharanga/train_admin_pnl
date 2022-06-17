@@ -169,7 +169,7 @@ class Dashboard extends Component {
 												</div>
 												<Columnchart></Columnchart>
 											</div>
-											<div className="card-footer">
+											{/* <div className="card-footer">
 												<div className="row">
 													<div className="col-xl-3 col-md-6 mb-2">
 														<div className="clearfix">
@@ -224,7 +224,7 @@ class Dashboard extends Component {
 														<span className="text-uppercase font-10">Compared to last year</span>
 													</div>
 												</div>
-											</div>
+											</div> */}
 										</div>
 									</div>
 								</div>
@@ -399,7 +399,7 @@ class Dashboard extends Component {
 										</div>
 									</div>
 								</div> */} 
-								<div className="row">
+								{/* <div className="row">
 									<div className="col-md-12">
 										<div className="card">
 											<div className="card-header">
@@ -514,7 +514,7 @@ class Dashboard extends Component {
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> */}
 							</TabPane>
 							<TabPane tabId={2} className={classnames(['fade show'])}>
 								<div className="row clearfix row-deck">

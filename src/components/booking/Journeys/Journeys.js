@@ -5,7 +5,7 @@ import { TabContent, TabPane, Nav, NavLink, NavItem, } from "reactstrap";
 import classnames from 'classnames';
 import FormItem from 'antd/lib/form/FormItem';
 import Checkbox from 'antd/lib/checkbox/Checkbox';
-import { Button, Select, TimePicker, message, Table, InputNumber, Row, Col, Divider } from 'antd';
+import { Button, Select, TimePicker, message, Table, InputNumber, Row, Col, Divider,Space } from 'antd';
 import { addDoc, doc, getDoc, getDocs, onSnapshot } from 'firebase/firestore';
 import { routerCollection, stationCollection, trainCollection } from '../../../config/firebaseConfig';
 import Form, { useForm } from 'antd/lib/form/Form';
@@ -253,8 +253,10 @@ const Journeys = () => {
 										<FormItem name="seat" required label="Seat" rules={[{ required: true }]}>
 											<InputNumber className="w-100" />
 										</FormItem>
-										<Button htmlType="submit" type="primary">SAVE</Button>
-
+										<Space direction="horizontal">
+										<Button type="primary" htmlType="submit" >Save</Button>  
+										<Button type="primary" htmlType="submit">Update</Button>
+										</Space>
 									</Form>
 								</div>
 							</div>

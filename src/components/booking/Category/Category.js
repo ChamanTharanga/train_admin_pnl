@@ -7,7 +7,7 @@ import Dropzone from '../../common/DropzoneExample';
 import FormItem from 'antd/lib/form/FormItem';
 import Input from 'antd/lib/input/Input';
 import Form, { useForm } from 'antd/lib/form/Form';
-import { Avatar, Button, InputNumber, message, Table } from 'antd';
+import { Avatar, Button, InputNumber, message, Table,Space } from 'antd';
 import { doc, onSnapshot, setDoc } from 'firebase/firestore';
 import * as uuid from 'uuid';
 // import { categoryCollection } from '../../../config/firebaseConfig';
@@ -117,7 +117,10 @@ const Category = () => {
 										<FormItem name="price" required label="Price" rules={[{ required: true }]}>
 											<InputNumber className="w-100" />
 										</FormItem>
-										<Button type="primary" htmlType="submit">Save</Button>
+										<Space direction="horizontal">
+										<Button type="primary" htmlType="submit" >Save</Button>  
+										<Button type="primary" htmlType="submit">Update</Button>
+										</Space>
 									</Form>
 								</div>
 							</div>
