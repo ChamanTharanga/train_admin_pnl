@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import SweetAlert from 'sweetalert2-react';
 import DatePicker from "react-datepicker";
 import ToolTip from "../../common/toolTip";
-import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css"; 
 import { TabContent, TabPane, Nav, NavLink, NavItem, } from "reactstrap";
 import classnames from 'classnames';
 import Gridviewcomponent from '../../common/gridviewcomponent';
